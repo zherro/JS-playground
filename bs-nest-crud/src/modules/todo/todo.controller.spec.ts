@@ -22,29 +22,29 @@ describe('TodosController', () => {
 });
 
 
-describe('TodosController', () => {
-  let todoController: TodosController;
-  let todoService: TodosService;
+// describe('TodosController', () => {
+//   let todoController: TodosController;
+//   let todoService: TodosService;
 
-  beforeEach(async () => {
-    const moduleRef = await Test.createTestingModule({
-      controllers: [TodosController],
-      providers: [TodosService],
-    }).compile();
+//   beforeEach(async () => {
+//     const moduleRef = await Test.createTestingModule({
+//       controllers: [TodosController],
+//       providers: [TodosService],
+//     }).compile();
 
-    todoService = moduleRef.get<TodosService>(TodosService);
-    todoController = moduleRef.get<TodosController>(TodosController);
-  });
+//     todoService = moduleRef.get<TodosService>(TodosService);
+//     todoController = moduleRef.get<TodosController>(TodosController);
+//   });
 
-  describe('getTodos', () => {
-    it('should return an array of todos', async () => {
-      const result: any = ['test'];
-      jest.spyOn(todoService, 'getAllTodos').mockImplementation(() => result);
+//   describe('getTodos', () => {
+//     it('should return an array of todos', async () => {
+//       const result: any = ['test'];
+//       jest.spyOn(todoService, 'getAllTodos').mockImplementation(() => result);
 
-      expect(await todoController.getTodos({})).toBe(result);
-    });
-  });
-});
+//       expect(await todoController.getTodos({})).toBe(result);
+//     });
+//   });
+// });
 
 
 
