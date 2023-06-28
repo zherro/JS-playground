@@ -2,13 +2,18 @@
 
 ## About
 
+*BASIC*
+
 - react: 18.2.0
 - next: 13.4.7
+- formik: ^2.4.2
+
+*FOR MUI (material design)*
 
 - @emotion/react: ^11.11.1
 - @emotion/styled: ^11.11.0
 - @mui/material: ^5.13.6
-- formik: ^2.4.2
+
 
 ## Getting Started
 

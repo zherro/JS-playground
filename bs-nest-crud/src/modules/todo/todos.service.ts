@@ -8,6 +8,7 @@ import { FilterDto } from './dto/filter.dto';
 
 @Injectable()
 export class TodosService {
+  
   constructor(@InjectRepository(Todo) private todoRepository: Repository<Todo>) {}
 
   // find all
@@ -19,8 +20,7 @@ export class TodosService {
     const keyword = query.filter || '';
 
     return await this.todoRepository.findAndCount({
-      // where: { title: Like('%' + keyword + '%') }, order: { title: "ASC" },
-      where: {},
+      where: query.filter ? { title: Like('%' + keyword + '%') } : {},
       order: { id: 'DESC' },
       take: take,
       skip: skip,

@@ -25,24 +25,24 @@ const setupDataSource = async () => {
     name: 'current_database',
     args: [],
     returns: DataType.text,
-    implementation: () => 'test'
+    implementation: () => 'test',
   });
 
   db.public.registerFunction({
     name: 'version',
     args: [],
     returns: DataType.text,
-    implementation: () => 'test'
+    implementation: () => 'test',
   });
 
   db.public.registerFunction({
     name: 'jsonb_typeof',
     args: [DataType.jsonb],
     returns: DataType.text,
-    implementation: x => (x ? x.constructor.name : null),
+    implementation: (x) => (x ? x.constructor.name : null),
   });
 
-  db.public.interceptQueries(queryText => {
+  db.public.interceptQueries((queryText) => {
     if (queryText.search(/(pg_views|pg_matviews|pg_tables|pg_enum)/g) > -1) {
       return [];
     }
@@ -51,12 +51,12 @@ const setupDataSource = async () => {
 
   const ds: DataSource = await db.adapters.createTypeormDataSource({
     type: 'postgres',
-    entities: [Todo]
+    entities: [Todo],
   });
   await ds.initialize();
   await ds.synchronize();
 
-  return {ds, db};
+  return { ds, db };
 };
 
 describe('TodosController (e2e)', () => {
@@ -66,15 +66,13 @@ describe('TodosController (e2e)', () => {
 
   let repository: Repository<Todo>;
 
-
   beforeEach(async () => {
-
-    let {ds, db} = await setupDataSource();
+    let { ds, db } = await setupDataSource();
     dataSource = ds;
 
     const module = await Test.createTestingModule({
       // imports: [TypeOrmModule.forFeature([Todo])],
-      
+
       imports: [AppModule],
       // controllers: [TodosController],
       // providers: [TodosService],
@@ -88,7 +86,9 @@ describe('TodosController (e2e)', () => {
 
     repository = dataSource?.getRepository(Todo);
 
-    await repository.query('CREATE TABLE IF NOT EXISTS todos (id integer, title varchar, content varchar, done boolean)');
+    await repository.query(
+      'CREATE TABLE IF NOT EXISTS todos (id integer, title varchar, content varchar, done boolean)',
+    );
   });
 
   afterEach(async () => {
@@ -108,7 +108,7 @@ describe('TodosController (e2e)', () => {
             id: 111,
             title: 'my todo',
             content: null,
-            done: false
+            done: false,
           },
         ]);
       });
