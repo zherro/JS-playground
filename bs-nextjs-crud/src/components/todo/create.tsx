@@ -1,5 +1,5 @@
 import React , { useState, useEffect } from "react";
-import FormikContainer from "../forms/formik/formik.form";
+import FormikContainer from "../forms/formik/FormikContainer";
 
 const CreateForm = ({id}: any) => {
 
@@ -54,7 +54,7 @@ const CreateForm = ({id}: any) => {
     }
 
     return (
-        <FormikContainer initialValues={formData} onSubmit={() => {}} >
+        <FormikContainer initialValues={formData} >
             {(props: any) => (
                 <FormFields editing={id != undefined} handleAction={handleSubmit} {...props} />
             )}

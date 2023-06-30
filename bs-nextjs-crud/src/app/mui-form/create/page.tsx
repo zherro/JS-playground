@@ -1,14 +1,14 @@
 
 'use client'
 import React from "react";
-import { FormControl, TextField } from '@mui/material';
-import FormikContainer from "../../../components/forms/formik/formik.form";
+import { Box, Container,  Grid } from '@mui/material';
+import FormikContainer from "../../../components/forms/formik/FormikContainer";
 
 const MuiCreatePage = () => {
 
 
     const handleSubmit = () => {
-        
+
     }
 
     return (
@@ -43,16 +43,11 @@ const FormContainer = ({
     resetForm,
 }: FormProps) => {
     return (
-        <FormControl>
-            <TextField
-                id="title"
-                name="title"
-                label="Titulo"
-                value={values?.title || ''}
-                onChange={handleChange}
-            />
-            {/* <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText> */}
-        </FormControl>
+        <Container fixed >
+            <Grid item spacing={2}>
+                
+            </Grid>
+        </Container>
     );
 }
 

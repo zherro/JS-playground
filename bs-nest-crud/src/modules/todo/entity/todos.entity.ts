@@ -3,6 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('todos', { schema: 'public' })
 class Todo {
+  
   @ApiProperty({
     example: '000',
     description: 'todo unic id',

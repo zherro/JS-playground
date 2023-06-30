@@ -9,7 +9,6 @@ import { FilterDto } from './dto/filter.dto';
 @ApiTags('todos')
 @Controller('todos')
 export class TodosController {
-  
   constructor(private readonly todosService: TodosService) {}
 
   // get all todos
@@ -30,12 +29,13 @@ export class TodosController {
   }
 
   // create todo
-  @Post()
   @ApiOperation({ description: 'Create a todo.' })
   @ApiCreatedResponse({
     description: 'The todo item has been successfully created.',
     type: Todo,
   })
+
+  @Post()
   async createTodo(@Body() todo: CreateTodoDto, @Req() req): Promise<Todo> {
     return this.todosService.createTodo(req.body);
   }

@@ -24,8 +24,7 @@ export const setupDataSource = async () => {
 
   db.public.registerFunction({
     name: 'version',
-    implementation: () =>
-      'PostgreSQL 14.2, compiled by Visual C++ build 1914, 64-bit',
+    implementation: () => 'PostgreSQL 14.2, compiled by Visual C++ build 1914, 64-bit',
   });
 
   const ds: DataSource = await db.adapters.createTypeormDataSource(config);

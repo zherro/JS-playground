@@ -4,7 +4,6 @@ import { Formik, FormikValues } from 'formik';
 const FormikContainer = ({
   editable,
   children,
-  onSubmit,
   initialValues
 }: Props) => {
   // const validations =useYup(config?.fields); 
@@ -19,7 +18,7 @@ const FormikContainer = ({
     <Formik
       initialValues={initialValues}
       enableReinitialize
-      onSubmit={() => onSubmit()}
+      onSubmit={() => {}}
     // validationSchema={validations}
     >
       {children}
@@ -30,8 +29,26 @@ const FormikContainer = ({
 interface Props {
   editable?: boolean;
   children: React.ReactNode | any;
-  onSubmit: Function;
   initialValues: FormikValues;
+}
+
+
+export interface FormProps {
+  handleAction: Function;
+  editing: boolean;
+
+  // formik default properties
+  handleChange: any;
+  values: any | any[];
+  showError: boolean;
+  setShowError: Function;
+  handleSubmit?: any;
+  submitForm?: any;
+  errors?: any;
+  setValues?: any;
+  setFieldValue?: any;
+  isSubmitting?: any;
+  resetForm?: any;
 }
 
 export default FormikContainer;
