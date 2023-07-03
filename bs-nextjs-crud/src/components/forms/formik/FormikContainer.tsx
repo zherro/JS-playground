@@ -4,7 +4,8 @@ import { Formik, FormikValues } from 'formik';
 const FormikContainer = ({
   editable,
   children,
-  initialValues
+  initialValues,
+  validations
 }: Props) => {
   // const validations =useYup(config?.fields); 
   const [showError, setShowError] = useState(false);
@@ -18,8 +19,8 @@ const FormikContainer = ({
     <Formik
       initialValues={initialValues}
       enableReinitialize
-      onSubmit={() => {}}
-    // validationSchema={validations}
+      onSubmit={() => { }}
+      validationSchema={validations || {}}
     >
       {children}
     </Formik>
@@ -30,6 +31,7 @@ interface Props {
   editable?: boolean;
   children: React.ReactNode | any;
   initialValues: FormikValues;
+  validations?: any;
 }
 
 

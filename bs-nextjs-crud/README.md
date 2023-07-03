@@ -14,6 +14,10 @@
 - @emotion/styled: ^11.11.0
 - @mui/material: ^5.13.6
 
+*LINKS UTEIS*
+
+- [Como usar os Hooks para melhorar seu código em Next.js](https://medium.com/@alisoneuropa/introdu%C3%A7%C3%A3o-ao-react-hooks-como-usar-os-hooks-para-melhorar-seu-c%C3%B3digo-em-next-js-5730f941560c)
+
 
 ## Getting Started
 
