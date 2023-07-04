@@ -14,16 +14,28 @@ export class TodosService {
   async getAllTodos(query: FilterDto) {
     // return this.todoRepository.find();
 
+    console.log(query);
+
     const take = query.size || 10;
     const skip = query.page || 0;
     const keyword = query.filter || '';
 
-    return await this.todoRepository.findAndCount({
+    const result = await this.todoRepository.findAndCount({
       where: query.filter ? { title: Like('%' + keyword + '%') } : {},
       order: { id: 'DESC' },
       take: take,
       skip: skip,
     });
+
+    return {
+      content: result[0],
+      pagination: {
+        page: query.page,
+        size: 10,
+        total: result[1],
+        totalPages: +(''+result[1]/10).split('.')[0] +  +((''+result[1]/10).indexOf('.') >= 0 ? 1 : 0),
+      },
+    }
   }
 
   // find by id
@@ -59,8 +71,5 @@ export class TodosService {
   // delete
   async deleteTodo(id: number) {
     const deletedTodo = await this.todoRepository.delete(id);
-    if (!deletedTodo.affected) {
-      throw new HttpException('Todo not found', HttpStatus.NOT_FOUND);
-    }
   }
 }

@@ -1,6 +1,5 @@
 import TodoFormContainer from "./TodoFormContainer";
 
-
-const TodoFormPage = () => <TodoFormContainer />;
+const TodoFormPage = (props: any) => <TodoFormContainer {...props} />;
 
 export default TodoFormPage;

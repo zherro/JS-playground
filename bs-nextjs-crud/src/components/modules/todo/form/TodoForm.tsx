@@ -1,16 +1,24 @@
 import { Box, Button, Container, FormControlLabel, FormGroup, Grid, Stack, Switch, TextField } from "@mui/material";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 import { FormProps } from '../../../forms/formik/FormikContainer';
 
 const TodoForm = ({
     values,
     handleChange,
-    handleSubmit,
-    errors
+    handleSubmitForm,
+    errors,
+    isSubmitting
 }: FormProps) => {
+
+    const router = useRouter();
+
     return (
         <Container>
             <FormGroup>
+
+                <input id="id" name="id" type="hidden" value={values?.id || ''} />
+
                 <Grid item xs={12} mt={2}>
                     <TextField
                         fullWidth
@@ -40,21 +48,30 @@ const TodoForm = ({
 
 
                 <Grid item xs={12} mt={2}>
-                    <FormControlLabel
-                        control={<Switch
-                            checked={values?.done}
+                 <Switch
+                            id="done"
+                            name="done"
+                            value={values?.done}
                             onChange={handleChange}
                             inputProps={{ 'aria-label': 'controlled' }}
                         />
-                        }
-                        label="DONE"
-                    />
                 </Grid>
 
                 <Grid item xs={12}>
                     <Stack direction="row" justifyContent="flex-end" spacing={2}>
-                        <Button variant="outlined" color="error">Cancelar</Button>
-                        <Button variant="outlined" onClick={() => handleSubmit()} >Salvar</Button>
+                        <Button
+                            variant="outlined"
+                            color="error"
+                            onClick={() => router.push('/mui-form')}
+                        >
+                            Cancelar
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            onClick={() => handleSubmitForm(values)}
+                        >
+                            {isSubmitting ? 'Salvando...' : 'Salvar'}
+                        </Button>
                     </Stack>
                 </Grid>
             </FormGroup>

@@ -18,8 +18,8 @@ export class TodosController {
     type: [Todo],
   })
   @Get()
-  getTodos(@Query() query: FilterDto) {
-    return this.todosService.getAllTodos(query);
+  getTodos(@Req() req) {
+    return this.todosService.getAllTodos(req.query);
   }
 
   // get todo by id

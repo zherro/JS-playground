@@ -6,4 +6,4 @@ const todoValidationSchema = yup.object().shape({
         .required('Titulo deve ser informado!')
   });
 
-  export default todoValidationSchema;
+  export default todoValidationSchema; 
