@@ -38,8 +38,6 @@ const useFetchData = () => {
             code = 500;
             error = { message: "Erro interno, contate o administrador!" };
             result = {};
-
-            console.warn(err)
         }
         setLoading(false);
 

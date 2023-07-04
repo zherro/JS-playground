@@ -1,4 +1,4 @@
-import { Box, Button, Container, FormControlLabel, FormGroup, Grid, Stack, Switch, TextField } from "@mui/material";
+import { Box, Button, Container, FormGroup, Grid, Stack, Switch, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { FormProps } from '../../../forms/formik/FormikContainer';
@@ -52,6 +52,7 @@ const TodoForm = ({
                             id="done"
                             name="done"
                             value={values?.done}
+                            checked={values?.done == true}
                             onChange={handleChange}
                             inputProps={{ 'aria-label': 'controlled' }}
                         />

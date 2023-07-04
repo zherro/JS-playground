@@ -40,7 +40,8 @@ const TodoList = () => {
     }
 
     const remove = async (id: number) => {
-        const [loading, code, result, error] = await fetchData(`http://localhost:3000/api/v1/todos/${id}`, "DELETE");
+        // const [loading, code, result, error] = await fetchData(`http://localhost:3000/api/v1/todos/${id}`, "DELETE");
+        await fetchData(`http://localhost:3000/api/v1/todos/${id}`, "DELETE");
         await loadData();
     }
 
@@ -48,7 +49,7 @@ const TodoList = () => {
         <Container>
             <Grid item xs={12} mt={2}>
                 <Stack direction="row" justifyContent="end" spacing={2}>
-                    <Button variant="outlined" onClick={() => router.push('/mui-form/new')}  color="success">Novo</Button>
+                    <Button variant="outlined" onClick={() => router.push('/mui-form/new')} color="success">Novo</Button>
                 </Stack>
             </Grid>
 
