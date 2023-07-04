@@ -47,10 +47,17 @@ const TodoList = () => {
     return (
         <Container>
             <Grid item xs={12} mt={2}>
+                <Stack direction="row" justifyContent="end" spacing={2}>
+                    <Button variant="outlined" onClick={() => router.push('/mui-form/new')}  color="success">Novo</Button>
+                </Stack>
+            </Grid>
+
+            <Grid item xs={12} mt={2}>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                         <TableHead>
                             <TableRow>
+                                <TableCell>ID</TableCell>
                                 <TableCell>Titulo</TableCell>
                                 <TableCell align="left">Descrição</TableCell>
                                 <TableCell align="center">Done ?</TableCell>
@@ -60,6 +67,7 @@ const TodoList = () => {
                         <TableBody>
                             {rows.map((row: any, idx: number) => (
                                 <TableRow key={idx}>
+                                    <TableCell scope="row">{row.id}</TableCell>
                                     <TableCell scope="row">{row.title}</TableCell>
                                     <TableCell align="left">{row.content}</TableCell>
                                     <TableCell align="center">{row.done}</TableCell>
